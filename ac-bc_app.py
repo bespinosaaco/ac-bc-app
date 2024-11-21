@@ -2,10 +2,8 @@ import streamlit as st
 import pandas as pd
 
 st.title("AC/BC 🦦")
-st.write(
-    "Atlantic Canada Biochar Project\n Made by Brian Espinosa Acosta"
-)
-
+st.header("Atlantic Canada Biochar Project")
+st.write("Made by Brian Espinosa Acosta")
 df = pd.DataFrame(
     [
         {"command": "st.selectbox", "rating": 4, "is_widget": True},
