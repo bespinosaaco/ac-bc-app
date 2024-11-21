@@ -3,8 +3,7 @@ import pandas as pd
 
 st.title("AC/BC 🦦")
 st.write(
-    "Atlantic Canada Biochar Project\n"
-    "Made by Brian Espinosa Acosta"
+    "Atlantic Canada Biochar Project\n Made by Brian Espinosa Acosta"
 )
 
 df = pd.DataFrame(
