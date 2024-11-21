@@ -1,7 +1,7 @@
 # 🎈 Run AB/AC 🦦 in your computer
 A simple Streamlit app template for you to modify!
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([https://blank-app-template.streamlit.app/](https://ac-bc-app-rcg2ddswglystydkgn2jpe.streamlit.app/))
 
 ### How to run it on your own machine
 
@@ -14,5 +14,5 @@ A simple Streamlit app template for you to modify!
 2. Run the app
 
    ```
-   $ streamlit run ac-bc.py
+   $ streamlit run ac-bc_app.py
    ```
