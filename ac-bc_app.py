@@ -7,7 +7,7 @@ import streamlit as st
 import hmac
 
 # Configuration
-NEXTCLOUD_URL = st.secrets["nextcloud"]["NEXTCLOUD_URL"]
+NEXTCLOUD_URL = st.secrets["nextcloud"]["nextcloud_url"]
 USERNAME = st.secrets["nextcloud"]["username"]
 PASSWORD = st.secrets["nextcloud"]["next_cloudpass"]
 
