@@ -7,7 +7,7 @@ import streamlit as st
 import hmac
 
 # Connecting to the cloud
-NEXTCLOUD_URL = "https://nextcloud.computecanada.ca/remote.php/dav/files/be4/ac-bc"
+NEXTCLOUD_URL = st.secrets["nextcloud"]["NEXTCLOUD_URL"]
 USERNAME = st.secrets["nextcloud"]["username"]
 PASSWORD = st.secrets["nextcloud"]["next_cloudpass"]
 
@@ -80,6 +80,5 @@ if __name__ == "__main__":
     st.title("AC/BC 🦦")
     st.header("Atlantic Canada Biochar Project")
     st.write("Made by Brian Espinosa Acosta")
-    st.write(NEXTCLOUD_URL)
     st.dataframe(master_sheet, use_container_width=True)
 
