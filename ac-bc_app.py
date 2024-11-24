@@ -81,5 +81,6 @@ if __name__ == "__main__":
     st.title("AC/BC 🦦")
     st.header("Atlantic Canada Biochar Project")
     st.write("Made by Brian Espinosa Acosta")
+    st.write(NEXTCLOUD_URL)
     st.dataframe(master_sheet, use_container_width=True)
 
