@@ -4,11 +4,39 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import io
 import streamlit as st
+import hmac
 
 # Configuration
 NEXTCLOUD_URL = "https://nextcloud.computecanada.ca/remote.php/dav/files/be4/ac-bc"
-USERNAME = "be4"
-PASSWORD = "7J8MZ-5wmX7-qBgpE-nLk4t-B6oM4"
+USERNAME = st.secrets["nextcloud"]["username"]
+PASSWORD = st.secrets["nextcloud"]["password"]
+
+def check_password():
+    """Returns `True` if the user had the correct password."""
+
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""
+        if hmac.compare_digest(st.session_state["password"], st.secrets["password"]):
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store the password.
+        else:
+            st.session_state["password_correct"] = False
+
+    # Return True if the password is validated.
+    if st.session_state.get("password_correct", False):
+        return True
+
+    # Show input for password.
+    st.text_input(
+        "Password", type="password", on_change=password_entered, key="password"
+    )
+    if "password_correct" in st.session_state:
+        st.error("😕 Password incorrect")
+    return False
+
+
+if not check_password():
+    st.stop()  # Do not continue if check_password is not True.
 
 # Function to list files in the specific folder
 def list_nextcloud_folder_files():
@@ -45,19 +73,6 @@ def get_csv_file_as_dataframe(file_path):
     else:
         print(f"Failed to download file. Status code: {response.status_code}")
         return None
-
-# # Main script
-# if __name__ == "__main__":
-#     list_nextcloud_folder_files()
-#
-#     file_path = "/master.csv"
-#     if file_path.endswith(".csv"):
-#         df = get_csv_file_as_dataframe(file_path)
-#         if df is not None:
-#             print("\nDataFrame successfully retrieved:\n")
-#             print(df)
-#     else:
-#         print("The specified file is not a CSV file.")
 
 if __name__ == "__main__":
     file_path = "/master.csv"
