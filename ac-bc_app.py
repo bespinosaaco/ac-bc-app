@@ -7,7 +7,7 @@ import streamlit as st
 import hmac
 
 # Connecting to the cloud
-NEXTCLOUD_URL = 'https://nextcloud.computecanada.ca/remote.php/dav/files/be4/ac-bc'
+NEXTCLOUD_URL = "https://nextcloud.computecanada.ca/remote.php/dav/files/be4/ac-bc"
 USERNAME = st.secrets["nextcloud"]["username"]
 PASSWORD = st.secrets["nextcloud"]["next_cloudpass"]
 
