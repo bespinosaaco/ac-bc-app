@@ -6,8 +6,8 @@ import io
 import streamlit as st
 import hmac
 
-# Configuration
-NEXTCLOUD_URL = st.secrets["nextcloud"]["nextcloud_url"]
+# Connecting to the cloud
+NEXTCLOUD_URL = 'https://nextcloud.computecanada.ca/remote.php/dav/files/be4/ac-bc'
 USERNAME = st.secrets["nextcloud"]["username"]
 PASSWORD = st.secrets["nextcloud"]["next_cloudpass"]
 
@@ -33,7 +33,6 @@ def check_password():
     if "password_correct" in st.session_state:
         st.error("😕 Password incorrect")
     return False
-
 
 if not check_password():
     st.stop()  # Do not continue if check_password is not True.
