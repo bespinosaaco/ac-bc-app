@@ -7,9 +7,9 @@ import streamlit as st
 import hmac
 
 # Configuration
-NEXTCLOUD_URL = "https://nextcloud.computecanada.ca/remote.php/dav/files/be4/ac-bc"
+NEXTCLOUD_URL = st.secrets["nextcloud"]["NEXTCLOUD_URL"]
 USERNAME = st.secrets["nextcloud"]["username"]
-PASSWORD = st.secrets["nextcloud"]["password"]
+PASSWORD = st.secrets["nextcloud"]["next_cloudpass"]
 
 def check_password():
     """Returns `True` if the user had the correct password."""
