@@ -8,7 +8,7 @@ import streamlit as st
 # Configuration
 NEXTCLOUD_URL = "https://nextcloud.computecanada.ca/remote.php/dav/files/be4/ac-bc"
 USERNAME = "be4"
-PASSWORD = "7J8MZ-5wmX7-qBgpE-nLk4t-B6oM4"
+PASSWORD = ""
 
 # Function to list files in the specific folder
 def list_nextcloud_folder_files():
