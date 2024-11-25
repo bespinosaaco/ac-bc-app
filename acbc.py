@@ -27,6 +27,8 @@ def check_password():
         return True
 
     # Show input for password.
+    st.title("Welcome to AC/BC 🦦")
+    st.write(''' ### Insert group's password to access''')
     st.text_input(
         "Password", type="password", on_change=password_entered, key="password"
     )
@@ -59,7 +61,6 @@ def list_nextcloud_folder_files():
                 print(f"[File] {file_name}")
     else:
         print(f"Failed to list files. Status code: {response.status_code}")
-
 # Function to download and return CSV as pandas DataFrame
 def get_csv_file_as_dataframe(file_path):
     url = f"{NEXTCLOUD_URL}{file_path}"
@@ -72,13 +73,35 @@ def get_csv_file_as_dataframe(file_path):
     else:
         print(f"Failed to download file. Status code: {response.status_code}")
         return None
+def get_dpt_as_dataframe(file_path):
+    url = f"{NEXTCLOUD_URL}{file_path}"
+    response = requests.get(url, auth=HTTPBasicAuth(USERNAME, PASSWORD))
+
+    if response.status_code == 200:
+        dpt = response.content.decode('utf-8')
+        df = pd.read_table(io.StringIO(dpt),
+                           header=None,
+                           names=['Wavenumber','Intensity'],
+                           delimiter=',')
+        return df
+    else:
+        print(f"Failed to download file. Status code: {response.status_code}")
+        return None
 
 if __name__ == "__main__":
-    file_path = "/master.csv"
-    master_sheet = get_csv_file_as_dataframe(file_path)
-    # Title and header
-    st.title("AC/BC 🦦")
-    st.header("Atlantic Canada Biochar Project")
-    st.write("Made by Brian Espinosa Acosta")
-    st.dataframe(master_sheet, use_container_width=True)
+
+    pages = {
+        "Home": [
+            st.Page("home.py", title="Welcome to AC/BC")
+        ],
+        "Sample Dashboard": [
+            st.Page("sample_dashboard.py", title="Sample Dashboard")
+            ],
+    }
+
+    pg = st.navigation(pages)
+    pg.run()
+
+
+
 
